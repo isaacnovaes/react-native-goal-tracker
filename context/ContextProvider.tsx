@@ -1,42 +1,32 @@
-import { useMemo, createContext, useReducer } from "react";
-
-interface Goal {
-    id: number;
-    goal: string;
-    date: Date;
-    complete: boolean;
-}
+import { useMemo, createContext, useReducer } from 'react';
+import type { Goal } from '../Types/types';
 
 type State = {
     goals: Goal[];
 };
 
-type Action = { type: "ADD_GOAL"; goal: string };
+type Action = { type: 'ADD_GOAL'; goal: string };
 
 type ProviderProps = {
     children: React.ReactNode;
 };
 
 const initialState: State = {
-    goals: [
-        { id: 1, goal: "first todo", date: new Date(), complete: false },
-        { id: 2, goal: "second todo", date: new Date(), complete: false },
-        { id: 3, goal: "third todo", date: new Date(), complete: false },
-    ],
+    goals: [],
 };
 
 const reducer = (state: State, action: Action): State => {
     switch (action.type) {
-        case "ADD_GOAL": {
+        case 'ADD_GOAL': {
             const newGoal: Goal = {
-                id: Math.random(),
+                id: Math.random().toString(),
                 goal: action.goal,
                 date: new Date(),
                 complete: false,
             };
+            state.goals.push(newGoal);
             return {
                 ...state,
-                goals: [...state.goals, newGoal],
             };
         }
 

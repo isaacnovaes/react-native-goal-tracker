@@ -1,7 +1,7 @@
-import { View, StyleSheet } from "react-native";
-import GoalInput from "../GoalInput/GoalInput";
-import Goals from "../Goals/Goals";
-import colors from "../../colors";
+import { View, StyleSheet } from 'react-native';
+import GoalInput from '../GoalInput/GoalInput';
+import Goals from '../Goals/Goals';
+import colors from '../../colors';
 
 const AppContainer = () => {
     return (

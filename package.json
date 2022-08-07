@@ -8,12 +8,14 @@
         "ios": "expo start --ios",
         "web": "expo start --web",
         "eject": "expo eject",
+        "test": "jest",
+        "coverage": "jest --coverage",
         "format": "prettier --write .",
         "check": "prettier --check .",
         "lint": "eslint .",
         "lint-fix": "eslint --fix .",
         "check-conflict": "eslint-config-prettier **/*",
-        "test": "jest"
+        "all": "run-s format lint lint-fix"
     },
     "dependencies": {
         "expo": "~45.0.0",
@@ -39,16 +41,21 @@
         "eslint-plugin-react": "^7.30.1",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-native": "^4.0.0",
-        "jest": "^28.1.3",
+        "jest": "^27.5.1",
+        "npm-run-all": "^4.1.5",
         "prettier": "2.7.1",
         "react-test-renderer": "^17.0.2",
         "typescript": "~4.3.5"
     },
     "private": true,
     "jest": {
-        "preset": "react-native",
+        "preset": "@testing-library/react-native",
         "setupFilesAfterEnv": [
             "@testing-library/jest-native/extend-expect"
+        ],
+        "collectCoverageFrom": [
+            "./components/**",
+            "./context/**"
         ]
     }
 }
