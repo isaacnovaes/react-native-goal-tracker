@@ -72,11 +72,11 @@ module.exports = {
             {
                 variables: false,
             },
-        ], // overwrite base no-use-before-define eslint
+        ], // overwrite base no-use-before-define eslint, for StyleSheet in react native
         'react/boolean-prop-naming': ['error', { validateNested: true }],
         'react/button-has-type': 'warn',
         'react/no-array-index-key': 'warn',
-        'react/no-unstable-nested-components': 'error',
+        'react/no-unstable-nested-components': 'warn',
         'react/no-unused-prop-types': 'warn',
         'react/no-unused-state': 'warn',
         'react/self-closing-comp': 'warn',
@@ -92,7 +92,7 @@ module.exports = {
         {
             files: ['*.test.tsx'],
             rules: {
-                '@typescript-eslint/no-unsafe-assignment': 0, // ignore weird type assertion
+                '@typescript-eslint/no-unsafe-assignment': 0, // ignore weird type assertion in test files
             },
         },
     ],
