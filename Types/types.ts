@@ -4,3 +4,5 @@ export interface Goal {
     date: Date;
     complete: boolean;
 }
+
+export type OrNull<T> = T | null;
