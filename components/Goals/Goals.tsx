@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { useContext } from 'react';
 import { Context } from '../../context/ContextProvider';
 import GoalItem from '../GoalItem/GoalItem';
@@ -13,8 +13,7 @@ const Goals = () => {
             <FlatList
                 data={goals}
                 renderItem={({ item }) => <GoalItem goal={item} />}
-                keyExtractor={(item) => item.id}
-                ListEmptyComponent={<Text>No goals</Text>}
+                keyExtractor={({ id }) => id}
             />
         </View>
     );
@@ -23,6 +22,7 @@ const Goals = () => {
 const styles = StyleSheet.create({
     goals: {
         marginTop: 50,
+        marginBottom: 40,
     },
 });
 

@@ -1,11 +1,15 @@
 import { useMemo, createContext, useReducer } from 'react';
-import type { Goal } from '../Types/types';
+import type { Goal, OrNull } from '../Types/types';
 
 type State = {
     goals: Goal[];
+    selectedId: OrNull<string>;
 };
 
-type Action = { type: 'ADD_GOAL'; goal: string };
+type Action =
+    | { type: 'ADD_GOAL'; goal: string }
+    | { type: 'DELETE_GOAL'; id: string }
+    | { type: 'SELECT_GOAL'; id: OrNull<string> };
 
 type ProviderProps = {
     children: React.ReactNode;
@@ -13,6 +17,7 @@ type ProviderProps = {
 
 const initialState: State = {
     goals: [],
+    selectedId: null,
 };
 
 const reducer = (state: State, action: Action): State => {
@@ -29,7 +34,14 @@ const reducer = (state: State, action: Action): State => {
                 ...state,
             };
         }
-
+        case 'DELETE_GOAL':
+            return {
+                ...state,
+                goals: state.goals.filter((goal) => goal.id !== action.id),
+                selectedId: null,
+            };
+        case 'SELECT_GOAL':
+            return { ...state, selectedId: action.id };
         default:
             return state;
     }

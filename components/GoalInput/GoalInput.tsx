@@ -1,12 +1,24 @@
 import { useContext, useState, useRef } from 'react';
-import { Button, StyleSheet, TextInput, View } from 'react-native';
+import {
+    Button,
+    Modal,
+    StyleSheet,
+    TextInput,
+    View,
+    Image,
+} from 'react-native';
 import colors from '../../colors';
 import { Context } from '../../context/ContextProvider';
+import type { OrNull } from '../../Types/types';
 
-const GoalInput = () => {
+const GoalInput = ({
+    setShowGoalInput,
+}: {
+    setShowGoalInput: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
     const { dispatch } = useContext(Context);
     const [inputText, setInputText] = useState('');
-    const textInput = useRef<TextInput>(null);
+    const textInput = useRef<OrNull<TextInput>>(null);
 
     const onAddGoal = () => {
         if (inputText.trim() === '') return;
@@ -18,33 +30,67 @@ const GoalInput = () => {
         setInputText('');
     };
     return (
-        <View style={styles.goalInput}>
-            <TextInput
-                placeholder='Enter your goal...'
-                style={styles.textInput}
-                onChangeText={(e) => {
-                    if (e.trim() === '') return;
-                    setInputText(e);
-                }}
-                onEndEditing={onAddGoal}
-                ref={textInput}
-            />
-            <Button title='Add goal' onPress={onAddGoal} />
-        </View>
+        <Modal animationType='slide'>
+            <View style={styles.goalInput}>
+                <Image
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                    source={require('../../assets/goal.png')}
+                    accessibilityLabel='Goal image'
+                    style={styles.image}
+                />
+                <TextInput
+                    placeholder='Enter your goal...'
+                    placeholderTextColor={colors.white}
+                    style={styles.textInput}
+                    onChangeText={(e) => {
+                        if (e.trim() === '') return;
+                        setInputText(e);
+                    }}
+                    onEndEditing={onAddGoal}
+                    ref={textInput}
+                />
+                <View style={styles.buttonsContainer}>
+                    <Button
+                        title='Back'
+                        onPress={() => setShowGoalInput(false)}
+                        color={colors.red}
+                    />
+                    <Button
+                        title='Add goal'
+                        onPress={onAddGoal}
+                        color={colors.lightPurple}
+                    />
+                </View>
+            </View>
+        </Modal>
     );
 };
 
 const styles = StyleSheet.create({
     goalInput: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flex: 1,
+        padding: 25,
+        paddingTop: 50,
+        backgroundColor: colors.darkPurple,
+    },
+    image: {
+        width: 100,
+        height: 100,
+        marginBottom: 30,
+        alignSelf: 'center',
     },
     textInput: {
-        flexGrow: 1,
         marginRight: 10,
-        paddingHorizontal: 8,
+        padding: 8,
         borderWidth: 1,
+        borderRadius: 8,
         borderColor: colors.borderColor,
+        color: colors.white,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 30,
     },
 });
 

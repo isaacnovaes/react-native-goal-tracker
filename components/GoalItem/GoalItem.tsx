@@ -1,14 +1,22 @@
-import { StyleSheet, Text } from 'react-native';
+import { useContext } from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import colors from '../../colors';
+import { Context } from '../../context/ContextProvider';
 import type { Goal } from '../../Types/types';
 
 const GoalItem = ({ goal }: { goal: Goal }) => {
-    return <Text style={styles.goal}>{goal.goal}</Text>;
+    const { dispatch } = useContext(Context);
+    return (
+        <Pressable
+            onPress={() => dispatch({ type: 'SELECT_GOAL', id: goal.id })}
+        >
+            <Text style={styles.goal}>{goal.goal}</Text>
+        </Pressable>
+    );
 };
 
 const styles = StyleSheet.create({
     goal: {
-        borderWidth: 1,
         padding: 8,
         marginBottom: 8,
         borderRadius: 6,
