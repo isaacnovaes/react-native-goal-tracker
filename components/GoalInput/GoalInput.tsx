@@ -11,6 +11,34 @@ import colors from '../../colors';
 import { Context } from '../../context/ContextProvider';
 import type { OrNull } from '../../Types/types';
 
+const styles = StyleSheet.create({
+    goalInput: {
+        flex: 1,
+        padding: 25,
+        paddingTop: 50,
+        backgroundColor: colors.darkPurple,
+    },
+    image: {
+        width: 100,
+        height: 100,
+        marginBottom: 30,
+        alignSelf: 'center',
+    },
+    textInput: {
+        marginRight: 10,
+        padding: 8,
+        borderWidth: 1,
+        borderRadius: 8,
+        borderColor: colors.borderColor,
+        color: colors.white,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 30,
+    },
+});
+
 const GoalInput = ({
     setShowGoalInput,
 }: {
@@ -65,33 +93,5 @@ const GoalInput = ({
         </Modal>
     );
 };
-
-const styles = StyleSheet.create({
-    goalInput: {
-        flex: 1,
-        padding: 25,
-        paddingTop: 50,
-        backgroundColor: colors.darkPurple,
-    },
-    image: {
-        width: 100,
-        height: 100,
-        marginBottom: 30,
-        alignSelf: 'center',
-    },
-    textInput: {
-        marginRight: 10,
-        padding: 8,
-        borderWidth: 1,
-        borderRadius: 8,
-        borderColor: colors.borderColor,
-        color: colors.white,
-    },
-    buttonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 30,
-    },
-});
 
 export default GoalInput;

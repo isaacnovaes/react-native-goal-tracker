@@ -3,6 +3,13 @@ import { useContext } from 'react';
 import { Context } from '../../context/ContextProvider';
 import GoalItem from '../GoalItem/GoalItem';
 
+const styles = StyleSheet.create({
+    goals: {
+        marginTop: 50,
+        marginBottom: 40,
+    },
+});
+
 const Goals = () => {
     const {
         state: { goals },
@@ -18,12 +25,5 @@ const Goals = () => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    goals: {
-        marginTop: 50,
-        marginBottom: 40,
-    },
-});
 
 export default Goals;

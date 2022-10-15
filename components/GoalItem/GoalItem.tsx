@@ -4,17 +4,6 @@ import colors from '../../colors';
 import { Context } from '../../context/ContextProvider';
 import type { Goal } from '../../Types/types';
 
-const GoalItem = ({ goal }: { goal: Goal }) => {
-    const { dispatch } = useContext(Context);
-    return (
-        <Pressable
-            onPress={() => dispatch({ type: 'SELECT_GOAL', id: goal.id })}
-        >
-            <Text style={styles.goal}>{goal.goal}</Text>
-        </Pressable>
-    );
-};
-
 const styles = StyleSheet.create({
     goal: {
         padding: 8,
@@ -25,5 +14,16 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
 });
+
+const GoalItem = ({ goal }: { goal: Goal }) => {
+    const { dispatch } = useContext(Context);
+    return (
+        <Pressable
+            onPress={() => dispatch({ type: 'SELECT_GOAL', id: goal.id })}
+        >
+            <Text style={styles.goal}>{goal.goal}</Text>
+        </Pressable>
+    );
+};
 
 export default GoalItem;

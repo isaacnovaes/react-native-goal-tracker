@@ -4,6 +4,38 @@ import { Context } from '../../context/ContextProvider';
 import { formatDistanceToNow } from 'date-fns';
 import colors from '../../colors';
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 25,
+        paddingTop: 50,
+        backgroundColor: colors.darkPurple,
+    },
+    heading: {
+        color: colors.white,
+        fontSize: 15,
+    },
+    goalText: {
+        padding: 10,
+        color: colors.white,
+        backgroundColor: colors.violet,
+        borderRadius: 6,
+        overflow: 'hidden',
+        marginTop: 20,
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 50,
+    },
+    image: {
+        width: 100,
+        height: 100,
+        marginBottom: 30,
+        alignSelf: 'center',
+    },
+});
+
 const GoalDetail = () => {
     const {
         state: { selectedId, goals },
@@ -53,35 +85,3 @@ const GoalDetail = () => {
     );
 };
 export default GoalDetail;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 25,
-        paddingTop: 50,
-        backgroundColor: colors.darkPurple,
-    },
-    heading: {
-        color: colors.white,
-        fontSize: 15,
-    },
-    goalText: {
-        padding: 10,
-        color: colors.white,
-        backgroundColor: colors.violet,
-        borderRadius: 6,
-        overflow: 'hidden',
-        marginTop: 20,
-    },
-    buttonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 50,
-    },
-    image: {
-        width: 100,
-        height: 100,
-        marginBottom: 30,
-        alignSelf: 'center',
-    },
-});

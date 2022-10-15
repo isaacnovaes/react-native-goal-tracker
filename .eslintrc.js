@@ -66,13 +66,8 @@ module.exports = {
         '@typescript-eslint/no-shadow': ['error', { hoist: 'all' }], // overwrite base no-shadow eslint
         'no-unused-expressions': 'off',
         '@typescript-eslint/no-unused-expressions': ['warn'], // overwrite base no-unused-expressions eslint
-        'no-use-before-define': 'off', // for StyleSheet in react native
-        '@typescript-eslint/no-use-before-define': [
-            'error',
-            {
-                variables: false,
-            },
-        ], // overwrite base no-use-before-define eslint, for StyleSheet in react native
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['warn'], // overwrite base no-use-before-define eslint
         'react/boolean-prop-naming': ['error', { validateNested: true }],
         'react/button-has-type': 'warn',
         'react/no-array-index-key': 'warn',
